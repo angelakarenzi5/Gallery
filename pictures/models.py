@@ -8,7 +8,7 @@ class Category(models.Model):
 
 class Location(models.Model):
     city = models.CharField(max_length =30)
-    country = models.CharField(max_length =30)
+    country = models.TextField()
 
 def search_by_title(cls,search_term):
         pictures = cls.objects.filter(title__icontains=search_term)
@@ -19,7 +19,7 @@ def search_by_title(cls,search_term):
 class Image(models.Model):
     image = models.ImageField(upload_to = 'gallery/s')
     image_name = models.CharField(max_length =30)
-    image_description = country = models.TextField()
+    image_description = models.CharField(max_length =100)
     category = models.ForeignKey(Category)
     location = models.ForeignKey(Location)
 

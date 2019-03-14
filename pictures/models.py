@@ -21,6 +21,7 @@ class Image(models.Model):
     image = models.ImageField(upload_to = 'gallery/s')
     image_name = models.CharField(max_length =30)
     image_description = models.CharField(max_length =100)
+    pub_date = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey(Category)
     location = models.ForeignKey(Location)
 
@@ -30,6 +31,13 @@ def __str__(self):
 def save_editor(self):
         self.save()
 
+@classmethod
+def get_image(cls,id):
+    try:
+        image=Image.objects.get(id=id)
+        return image
+    except DoesNotExist:
+        return Image.objects.get(id=1)
 class Meta:
         ordering = ['image_name']
 

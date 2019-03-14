@@ -3,11 +3,11 @@ from django.db import models
 
 # Create your models here.
 class Image(models.Model):
+    image = models.ImageField(upload_to = 'gallery/s')
     image_name = models.CharField(max_length =30)
     image_description = models.CharField(max_length =30)
-    email = models.EmailField()
-    category = models.ForeignKey(Editor)
-    location = models.ForeignKey(Editor)
+    category = models.ForeignKey(Category)
+    location = models.ForeignKey(Location)
 
 def __str__(self):
         return self.image_name
@@ -18,24 +18,17 @@ def save_editor(self):
 class Meta:
         ordering = ['image_name']
 
-# class tags(models.Model):
-#     name = models.CharField(max_length =30)
+class Category(models.Model):
+    name = models.CharField(max_length =30)
 
-#     def __str__(self):
-#         return self.name
+    def __str__(self):
+        return self.name
 
-class Article(models.Model):
-    title = models.CharField(max_length =60)
-    post = models.TextField()
-    editor = models.ForeignKey(Editor)
-    tags = models.ManyToManyField(tags)
-    pub_date = models.DateTimeField(auto_now_add=True)
-    article_image = models.ImageField(upload_to = 'articles/')
+class Location(models.Model):
+    city = models.CharField(max_length =60)
+    country = models.TextField()
 
-@classmethod
-
-    
 def search_by_title(cls,search_term):
-        news = cls.objects.filter(title__icontains=search_term)
-        return news
+        pictures = cls.objects.filter(title__icontains=search_term)
+        return pictures
 

@@ -8,7 +8,6 @@ class Image(models.Model):
     email = models.EmailField()
     category = models.ForeignKey(Editor)
     location = models.ForeignKey(Editor)
-    phone_number = models.CharField(max_length = 10,blank =True)
 
 def __str__(self):
         return self.image_name
@@ -34,17 +33,7 @@ class Article(models.Model):
     article_image = models.ImageField(upload_to = 'articles/')
 
 @classmethod
-def todays_news(cls):
-        today = dt.date.today()
-        news = cls.objects.filter(pub_date__date = today)
-        return news
 
-@classmethod
-def days_news(cls,date):
-        news = cls.objects.filter(pub_date__date = date)
-        return news
-
-@classmethod
     
 def search_by_title(cls,search_term):
         news = cls.objects.filter(title__icontains=search_term)

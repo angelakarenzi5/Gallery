@@ -38,6 +38,14 @@ def get_image(cls,id):
         return image
     except DoesNotExist:
         return Image.objects.get(id=1)
+
+ @classmethod
+    def search_by_title(cls,search_term):
+        pictures = cls.objects.filter(title__icontains=search_term)
+        return pictures
+
+
+
 class Meta:
         ordering = ['image_name']
 

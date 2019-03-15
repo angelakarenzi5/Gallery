@@ -10,12 +10,12 @@ def pictures_of_day(request):
 
     return render(request, 'today-pictures.html', {"date": date,"pictures":pictures})
 
-def pictures(request,pictures_id):
+def image(request,image_id):
     try:
-        picture = Picture.objects.get(id = picture_id)
+        image = Image.objects.get(id = image_id)
     except DoesNotExist:
         raise Http404()
-    return render(request,"/picture.html", {"picture":picture})
+    return render(request,"/image.html", {"image":image})
 
 
 def search_results(request):

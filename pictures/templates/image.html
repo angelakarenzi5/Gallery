@@ -5,7 +5,7 @@
  <div class="container">
 
    <div class="row">
-     <img src="{{picture.picture_image.url}}"  class="img-responsive" alt="">
+     <img src="{{image.image_image.url}}"  class="img-responsive" alt="">
    </div>
 
    <div class="row">
@@ -17,7 +17,7 @@
    </div>
 
    <div class="row">
-     <p>Posted {{image.pub_date|timesince}} taken in {{image.location.city.country}}</p>
+     <p>Posted {{image.pub_date|timesince}} taken in {{image.location.city.country}} under {{image.category.name}}</p>
    </div>
 
  </div>

@@ -30,3 +30,7 @@ def search_results(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'search.html',{"message":message})
+
+def location(request,location)
+    images=Image.get_location_images(location=location)
+    return render(request, 'today-pictures.html', {"date": date,"images":pictures}

@@ -12,6 +12,6 @@ class LocationTestClass(TestCase):
 
     # Testing Save Method
     def test_save_method(self):
-        self.james.save_editor()
-        editors = Editor.objects.all()
-        self.assertTrue(len(editors) > 0)
+        self.wecode.save_location()
+        locations = Location.objects.all()
+        self.assertTrue(len(locations) > 0)

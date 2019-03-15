@@ -11,6 +11,9 @@ class Location(models.Model):
     city = models.CharField(max_length =30)
     country = models.TextField()
 
+    def save_location(self):
+                self.save()
+
 # Create your models here.
 class Image(models.Model):
     image = models.ImageField(upload_to = 'gallery/')
@@ -23,8 +26,7 @@ class Image(models.Model):
     def __str__(self):
                 return self.image_name
                 
-    def save_editor(self):
-                self.save()
+    
 
     @classmethod
     def get_image(cls,id):

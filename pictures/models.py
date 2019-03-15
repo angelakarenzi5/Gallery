@@ -13,7 +13,7 @@ class Location(models.Model):
 
 # Create your models here.
 class Image(models.Model):
-    image = models.ImageField(upload_to = 'gallery/s')
+    image = models.ImageField(upload_to = 'gallery/')
     image_name = models.CharField(max_length =30)
     image_description = models.CharField(max_length =100)
     pub_date = models.DateTimeField(auto_now_add=True)

@@ -26,8 +26,13 @@ class Image(models.Model):
     def __str__(self):
                 return self.image_name
                 
-    
+    @classmethod
+    def get_location_images(cls,location)
+    local=Location.objects.filter(pk=loc)
+    images=Image.objects.filter(location=local)
+    return images
 
+    
     @classmethod
     def get_image(cls,id):
         try:

@@ -9,3 +9,10 @@ def pictures_of_day(request):
     pictures = Image.objects.all()
 
     return render(request, 'today-pictures.html', {"date": date,"pictures":pictures})
+
+def pictures(request,pictures_id):
+    try:
+        picture = Picture.objects.get(id = picture_id)
+    except DoesNotExist:
+        raise Http404()
+    return render(request,"/picture.html", {"picture":picture})

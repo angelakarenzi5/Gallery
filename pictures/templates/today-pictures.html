@@ -1,31 +1,47 @@
-{% extends 'base.html'%}
+{%extends 'base.html'%}
+{% block content %} 
 
-{% block content %}
-{{block.super}}
-<div class="container">
 
-    <!-- Looping through news   -->
-    {% for pictures_item in pictures %}
-  
-    <div class="row">
-     
-      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-        <h2 class="text-center"> {{pictures_item.name }} </h2>
+  {% for image in images %}
+
+  <div class=" hello">
+   
+    <div class="col-md-3">
+      <a href="" data-toggle="modal" data-target="#{{image.id}}"> <img src="{{image.image.url}}" class="img-responsive responsive img-holder" alt="Image"  height="200" width="300" id="hey" ></a>
+    </div>
+
+
+  <div id="{{image.id}}" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+
+        <div class="modal-content">
+            <div class="modal-header">
+              <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+             
+              <img src="{{image.image.url}}" alt="" id='myImg' height="600" width="680">
+            </div>
+            <div class="modal-body">
+             
+              <h4 class="modal-title text-center">{{image.image_name}}</h4>
+              <p>Description:{{image.image_description}}</p>
+              <p> Location:{{image.location.country}} {{image.location.city}}</p>
+              <a href="/share/{{image.id}}" class="btn btn-primary">Copy image address to clipboard</a>
+            </div>
+          
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+      
+        </div>
       </div>
-     
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-        <img src="{{pictures_item.image.url}}" class="img-responsive" alt="Image">
-      </div>
-  
-    </div>
-  
-    </div>
-  
-    {% empty %}
-    <div class="row">
-      <h2 class="text-center">There No photos Items</h2>
-    </div>
-    {% endfor %}
-  
+
+  {% empty %}
+  <div class="row">
+    <h2 class="text-center">There No Image yet</h2>
   </div>
+  {% endfor %}
+
+</div>
+
 {% endblock %}

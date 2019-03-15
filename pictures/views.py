@@ -8,7 +8,7 @@ def pictures_of_day(request):
     date = dt.date.today()
     pictures = Image.objects.all()
 
-    return render(request, 'today-pictures.html', {"date": date,"pictures":pictures})
+    return render(request, 'today-pictures.html', {"date": date,"images":pictures})
 
 def image(request,image_id):
     try:

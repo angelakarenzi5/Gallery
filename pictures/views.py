@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect 
 from django.http import HttpResponse, Http404
 import datetime as dt 
-from .models import Image
+from .models import Image, Location 
 
 
 def pictures_of_day(request):
@@ -30,3 +30,8 @@ def search_results(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'search.html',{"message":message})
+
+def location (request, location_id):
+    location = Location.objects.get(id = location_id)
+    images = Image.objects.filter(location = location.id)
+    return render(request,'location.html', {"images":images, "location":location})

@@ -1,5 +1,5 @@
 body{
-  background-image: url('https://images.pexels.com/photos/1851361/pexels-photo-1851361.jpeg');
+  background-image: url('https://images.pexels.com/photos/1029618/pexels-photo-1029618.jpeg');
   background-size:cover;
   background-repeat:no-repeat;
 }
@@ -14,4 +14,8 @@ height:320px;
 width:507px;
 margin-top:2px;
 
+}
+.navbar{
+
+  font-style:"FreeSerif,Bold Italic";
 }

@@ -45,3 +45,9 @@ class Image(models.Model):
 
     class Meta:
                 ordering = ['image_name']
+
+    @classmethod
+    def search_by_category(cls,search_term):
+                image_location = Location.objects.filter(location__country__icontains=search_term).first()
+                return image_location
+

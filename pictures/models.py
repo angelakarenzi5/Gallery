@@ -20,8 +20,8 @@ class Image(models.Model):
     image_name = models.CharField(max_length =30)
     image_description = models.CharField(max_length =100)
     pub_date = models.DateTimeField(auto_now_add=True)
-    category = models.ForeignKey(Category)
-    location = models.ForeignKey(Location)
+    category = models.ForeignKey('Category', on_delete=models.CASCADE,)
+    location = models.ForeignKey('Location',on_delete=models.CASCADE,)
 
     def __str__(self):
                 return self.image_name
@@ -39,15 +39,14 @@ class Image(models.Model):
 
     @classmethod
     def search_by_category(cls,search_term):
-                category = Category.objects.filter(name__icontains=search_term).first()
-                image = cls.objects.filter(category=category)
+                # category = Category.objects.filter(name__icontains=search_term).first()
+                image = cls.objects.filter(category__name__icontains=search_term)
                 return image
 
     class Meta:
                 ordering = ['image_name']
 
     @classmethod
-    def search_by_category(cls,search_term):
+    def search_by_location(cls,search_term):
                 image_location = Location.objects.filter(location__country__icontains=search_term).first()
                 return image_location
-
